@@ -26,7 +26,7 @@ services:
     restart: always
     image: constq/page-blog:back-v1
     ports: 
-      - "7001:7001"
+      - "7009:7009"
     depends_on:
       - mysql
     networks:

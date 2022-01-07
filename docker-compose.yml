@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 
 services:
   mysql:
@@ -13,9 +13,10 @@ services:
       - ./mysql/docker/source:/docker-entrypoint-initdb.d
     environment:                        #环境变量
       MYSQL_USER: qzr
-      MYSQL_PASS: 888888
-      MYSQL_ROOT_PASSWORD: 888888    #mysql的root密码
+      MYSQL_PASS: 66668888
+      MYSQL_ROOT_PASSWORD: 66668888    #mysql的root密码
       MYSQL_DATABASE: page     #mysql的初始化数据库
+      TZ: Asia/Shanghai
     ports:
       - "3306:3306"
     networks:
@@ -27,6 +28,8 @@ services:
     image: constq/page-blog:back-v1
     ports: 
       - "7009:7009"
+    environment:                        #环境变量
+      TZ: Asia/Shanghai
     depends_on:
       - mysql
     networks:
@@ -37,6 +40,8 @@ services:
     container_name: web
     restart: always
     image: constq/page-blog:front-v1
+    environment:                        #环境变量
+      TZ: Asia/Shanghai
     ports:
       - "9009:9009"
     networks:
